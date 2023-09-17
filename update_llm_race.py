@@ -21,8 +21,8 @@ shutil.rmtree(RESULTS_DIR, ignore_errors=True)
 results_repo = Repository(
     repo_type="dataset",
     local_dir=RESULTS_DIR,
-    token=os.environ["HF_TOKEN"],
     clone_from=OPEN_LLM_RESULTS,
+    token=os.environ["HF_TOKEN"],
 )
 os.chdir(RESULTS_DIR)
 logs = subprocess.run(
@@ -38,6 +38,7 @@ race_repo = Repository(
     repo_type="dataset",
     local_dir=RACE_DIR,
     clone_from=OPEN_LLM_RACE,
+    token=os.environ["HF_TOKEN"],
 )
 for log in tqdm(logs):
     commit = log.split(";")[0]
