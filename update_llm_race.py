@@ -12,9 +12,9 @@ from open_llm_utils import get_eval_results
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 OPEN_LLM_RESULTS = "https://huggingface.co/datasets/open-llm-leaderboard/results"
-OPEN_LLM_RACE = "https://huggingface.co/datasets/IlyasMoutawwakil/llm-race"
-RESULTS_DIR = "open-llm-results"
-RACE_DIR = "open-llm-race"
+OPEN_LLM_RACE = "https://huggingface.co/datasets/IlyasMoutawwakil/open-llm-race-dataset"
+RESULTS_DIR = "open-llm-leaderboard-results"
+RACE_DIR = "open-llm-race-dataset"
 
 # Get all commits from the open-llm-results repo
 shutil.rmtree(RESULTS_DIR, ignore_errors=True)
