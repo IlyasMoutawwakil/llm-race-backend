@@ -19,6 +19,8 @@ jobs:
           python-version: 3.8
 
       - name: Install dependencies
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
