@@ -2,13 +2,12 @@ import os
 import json
 import numpy as np
 import dateutil.parser
-from typing import List, Tuple
 
 METRICS = ["acc_norm", "acc_norm", "acc", "mc2"]
 BENCHMARKS = ["arc:challenge", "hellaswag", "hendrycksTest", "truthfulqa:mc"]
 
 
-def parse_eval_result(json_filepath: str) -> Tuple[str, list[dict]]:
+def parse_eval_result(json_filepath):
     try:
         with open(json_filepath) as fp:
             data = json.load(fp)
@@ -62,7 +61,7 @@ def parse_eval_result(json_filepath: str) -> Tuple[str, list[dict]]:
         return None, []
 
 
-def get_eval_results(eval_dir: str) -> List[dict]:
+def get_eval_results(eval_dir):
     json_filepaths = []
     for root, dir, files in os.walk(eval_dir):
         # We should only have json files in model results
