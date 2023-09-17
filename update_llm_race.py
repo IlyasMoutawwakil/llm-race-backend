@@ -42,7 +42,7 @@ race_repo = Repository(
 for log in tqdm(logs):
     commit = log.split(";")[0]
     # skip commits that are already in the save dir
-    if os.path.exists(f"{RACE_DIR}/commits/{commit}.csv"):
+    if os.path.exists(f"{RACE_DIR}/{commit}.csv"):
         continue
 
     try:
@@ -57,7 +57,7 @@ for log in tqdm(logs):
             lambda x: round(np.mean(list(x.values())), 1)
         )
         # save results
-        eval_results.to_csv(f"{RACE_DIR}/commits/{commit}.csv", index=False)
+        eval_results.to_csv(f"{RACE_DIR}/{commit}.csv", index=False)
     except Exception as e:
         print(e)
         continue
