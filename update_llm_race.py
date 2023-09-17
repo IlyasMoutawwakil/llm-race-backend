@@ -33,6 +33,7 @@ logs = subprocess.run(
 logs = [c.strip("'") for c in logs.stdout.split("\n") if c != ""]
 os.chdir("..")
 
+updated = False
 # Push new commits to llm-race repo
 race_repo = Repository(
     repo_type="dataset",
@@ -59,13 +60,15 @@ for log in tqdm(logs):
         )
         # save results
         eval_results.to_csv(f"{RACE_DIR}/{commit}.csv", index=False)
+        updated = True
     except Exception as e:
         print(e)
         continue
 
-race_repo.git_add(".")
-race_repo.git_commit("update")
-race_repo.git_push()
+if updated:
+    race_repo.git_add(".")
+    race_repo.git_commit("update")
+    race_repo.git_push()
 
 # Delete local repos
 shutil.rmtree(RESULTS_DIR, ignore_errors=True)
