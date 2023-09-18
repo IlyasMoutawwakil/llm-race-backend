@@ -66,6 +66,15 @@ for log in tqdm(logs):
         continue
 
 if updated:
+    # concatenate all the csv files into one
+    open_llm_race_dataset = pd.DataFrame()
+    for csv_file in tqdm(os.listdir(RACE_DIR)):
+        if ".csv" not in csv_file:
+            continue
+        commit_csv = pd.read_csv(f"{RACE_DIR}/{csv_file}")
+        open_llm_race_dataset = pd.concat([open_llm_race_dataset, commit_csv])
+    open_llm_race_dataset.to_csv(f"{RACE_DIR}/open-llm-race-dataset.csv", index=False)
+
     race_repo.git_add(".")
     race_repo.git_commit("update")
     race_repo.git_push()
