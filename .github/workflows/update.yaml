@@ -25,6 +25,11 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Enable Git LFS
+        run: |
+          git lfs install
+          git lfs pull
+
       - name: Run script
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
