@@ -33,4 +33,4 @@ jobs:
       - name: Run script
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: python update_llm_race.py
+        run: python update_llm_race_dataset.py
