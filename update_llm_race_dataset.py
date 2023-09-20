@@ -53,13 +53,8 @@ else:
 
 
 updated = False
-i = 0
 for log in tqdm(logs):
     commit = log.split(";")[0]
-
-    if i == 10:
-        break
-    i += 1
 
     if commit in previous_commits:
         continue
