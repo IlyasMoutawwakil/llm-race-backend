@@ -52,7 +52,6 @@ else:
     previous_commits = []
 
 
-updated = False
 for log in tqdm(logs):
     commit = log.split(";")[0]
 
