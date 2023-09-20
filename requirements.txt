@@ -1,4 +1,5 @@
+tqdm
 numpy
 pandas
-tqdm
+pyarrow
 huggingface_hub
